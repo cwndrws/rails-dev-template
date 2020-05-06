@@ -8,11 +8,17 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt update -y
 RUN apt upgrade -y
 
+# install yarn
+RUN apt install -y yarn
+
+# setup user
+RUN useradd -ms /bin/bash user && \
+    adduser user sudo
+USER user
+WORKDIR /home/user
+
 # update gems
 RUN gem update
 
 # install rails
 RUN gem install rails
-
-# install yarn
-RUN apt install -y yarn
