@@ -1,4 +1,4 @@
-FROM ruby:2
+FROM ruby:3
 
 # setup yarn source
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
